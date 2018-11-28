@@ -1,1 +1,1 @@
- elixir --sname node1 -S mix test --only distr1_test
+elixir --sname node1 -S mix test --only distr1_test
