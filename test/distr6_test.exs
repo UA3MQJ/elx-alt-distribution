@@ -12,20 +12,26 @@ defmodule Distr6Test do
     Logger.debug "Start server"
 
     :file.delete("test1.sock")
-    {ok, sock1} = :gen_udp.open(0, [{:ifaddr, {:local, 'test1.sock'}}])
+    {ok, sock1} = :gen_udp.open(0, [{:ifaddr, {:local, 'test1.sock'}}, {:active, false}, {:recbuf, 16}, {:sndbuf, 16}, {:read_packets, 2}])
 
     recv_messages(sock1)
   end
 
   def recv_messages(sock1) do
 
-    receive do
-      {:udp, ^sock1, {:local, _}, 0, data} ->
-        # Logger.debug ">>> data=#{inspect data}"
-        :gen_udp.send(sock1, {:local, 'test2.sock'}, 0, data)
+    # receive do
+    #   {:udp, ^sock1, {:local, _}, 0, data} ->
+    #     # Logger.debug ">>> data=#{inspect data}"
+    #     :gen_udp.send(sock1, {:local, 'test2.sock'}, 0, data)
+    #
+    #     recv_messages(sock1)
+    # end
 
-        recv_messages(sock1)
-    end
+    {:ok, {{_,_}, _, data}} = :gen_udp.recv(sock1, 0)
+    # Logger.debug ">>> data=#{inspect data}"
+    :gen_udp.send(sock1, {:local, 'test2.sock'}, 0, data)
+
+    recv_messages(sock1)
 
   end
 end

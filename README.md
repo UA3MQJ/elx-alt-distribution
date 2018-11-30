@@ -30,6 +30,11 @@
   ./start7.sh
   23:03:33.956 [debug] отработал за 64602 ms
   15479 RPS
+  23:37:33.227 [debug] отработал за 56134 ms - с параметрами udp и active true
+  17814 RPS
+  00:09:48.648 [debug] отработал за 60643 ms - c параметрами udp и active false
+  16490 RPS
+  
 
 ## Links
 
