@@ -1,0 +1,1 @@
+elixir --sname node2 -S mix test --only distr7_test

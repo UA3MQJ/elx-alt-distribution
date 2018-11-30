@@ -20,9 +20,16 @@
 Разница: между нодами на одной машине в 85 раз медленнее
 
 через pipes 1M
-
+  ./start4.sh
+  ./start5.sh
  23:53:38.766 [debug] отработал за 45761 ms
- 21853 PRS
+ 21853 RPS
+
+Через unix sockets
+  ./start6.sh
+  ./start7.sh
+  23:03:33.956 [debug] отработал за 64602 ms
+  15479 RPS
 
 ## Links
 
@@ -34,3 +41,4 @@
 
  https://gist.github.com/UA3MQJ/ea57d5004ab654889675058da78ca723
 
+ http://www.ostinelli.net/boost-message-passing-between-erlang-nodes/
