@@ -12,7 +12,8 @@ defmodule Distr6Test do
     Logger.debug "Start server"
 
     :file.delete("test1.sock")
-    {ok, sock1} = :gen_udp.open(0, [{:ifaddr, {:local, 'test1.sock'}}, {:active, false}, {:recbuf, 16}, {:sndbuf, 16}, {:read_packets, 2}])
+    # {ok, sock1} = :gen_udp.open(0, [{:ifaddr, {:local, 'test1.sock'}}, {:active, false}, {:recbuf, 16}, {:sndbuf, 16}, {:read_packets, 2}])
+    {ok, sock1} = :gen_udp.open(0, [{:ifaddr, {:local, 'test1.sock'}}, {:active, false}])
 
     recv_messages(sock1)
   end

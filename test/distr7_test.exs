@@ -12,7 +12,8 @@ defmodule Distr7Test do
     Logger.debug "Start client"
 
     :file.delete("test2.sock")
-    {ok, sock2} = :gen_udp.open(0, [{:ifaddr, {:local, 'test2.sock'}}, {:active, false}, {:recbuf, 16}, {:sndbuf, 16}, {:read_packets, 2}])
+    # {ok, sock2} = :gen_udp.open(0, [{:ifaddr, {:local, 'test2.sock'}}, {:active, false}, {:recbuf, 16}, {:sndbuf, 16}, {:read_packets, 2}])
+    {ok, sock2} = :gen_udp.open(0, [{:ifaddr, {:local, 'test2.sock'}}, {:active, false}])
 
     time1 = :os.system_time(:millisecond)
     send_msgs('message\n', sock2, 1000_000)
